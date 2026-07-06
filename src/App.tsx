@@ -497,6 +497,8 @@ function Memorization({
   updateProgress: (id: string, patch: Partial<EntryProgress>) => void;
   reviewOnly: boolean;
 }) {
+  const [groupFilter, setGroupFilter] = useState<"all" | VocabularyGroup>("all");
+
   const deck = useMemo(() => {
     const source = reviewOnly
       ? vocabulary.filter((item) => {
@@ -504,14 +506,16 @@ function Memorization({
           return itemProgress.status === "focus" || itemProgress.wrong > 0;
         })
       : vocabulary;
-    return [...source].sort((a, b) => {
-      const aProgress = getProgress(progress, a.id);
-      const bProgress = getProgress(progress, b.id);
-      const aScore = (aProgress.status === "focus" ? -3 : 0) + aProgress.correct - aProgress.wrong * 2;
-      const bScore = (bProgress.status === "focus" ? -3 : 0) + bProgress.correct - bProgress.wrong * 2;
-      return aScore - bScore;
-    });
-  }, [progress, reviewOnly]);
+    return source
+      .filter((item) => groupFilter === "all" || item.group === groupFilter)
+      .sort((a, b) => {
+        const aProgress = getProgress(progress, a.id);
+        const bProgress = getProgress(progress, b.id);
+        const aScore = (aProgress.status === "focus" ? -3 : 0) + aProgress.correct - aProgress.wrong * 2;
+        const bScore = (bProgress.status === "focus" ? -3 : 0) + bProgress.correct - bProgress.wrong * 2;
+        return aScore - bScore;
+      });
+  }, [groupFilter, progress, reviewOnly]);
 
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
@@ -522,7 +526,7 @@ function Memorization({
   useEffect(() => {
     setIndex(0);
     setFlipped(false);
-  }, [reviewOnly]);
+  }, [groupFilter, reviewOnly]);
 
   if (!entry || !itemProgress) {
     return (
@@ -546,13 +550,23 @@ function Memorization({
           <p>Memorization</p>
           <h1>{reviewOnly ? "重点复习闪卡" : "闪卡背诵"}</h1>
         </div>
-        <div className="segmented">
-          <button className={frontMode === "word" ? "selected" : ""} onClick={() => setFrontMode("word")}>
-            英文
-          </button>
-          <button className={frontMode === "chinese" ? "selected" : ""} onClick={() => setFrontMode("chinese")}>
-            中文
-          </button>
+        <div className="study-controls">
+          <select value={groupFilter} onChange={(event) => setGroupFilter(event.target.value as "all" | VocabularyGroup)}>
+            <option value="all">全部分组</option>
+            {groups.map((item) => (
+              <option key={item} value={item}>
+                {item}
+              </option>
+            ))}
+          </select>
+          <div className="segmented">
+            <button className={frontMode === "word" ? "selected" : ""} onClick={() => setFrontMode("word")}>
+              英文
+            </button>
+            <button className={frontMode === "chinese" ? "selected" : ""} onClick={() => setFrontMode("chinese")}>
+              中文
+            </button>
+          </div>
         </div>
       </header>
 
