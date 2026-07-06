@@ -102,6 +102,7 @@ def main() -> None:
         entries.append(
             {
                 "id": entry_id,
+                "group": "雅思同义替换",
                 "word": word_text,
                 "synonyms": synonyms,
                 "chinese": chinese_text,
@@ -115,9 +116,11 @@ def main() -> None:
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     payload = json.dumps(entries, ensure_ascii=False, indent=2)
     OUTPUT.write_text(
-        "export type Scenario = \"Reading\" | \"Listening\" | \"Writing\" | \"Speaking\";\n\n"
+        "export type Scenario = \"Reading\" | \"Listening\" | \"Writing\" | \"Speaking\" | \"Biology\";\n"
+        "export type VocabularyGroup = \"雅思同义替换\" | \"生物学专业名词\";\n\n"
         "export interface VocabularyEntry {\n"
         "  id: string;\n"
+        "  group: VocabularyGroup;\n"
         "  word: string;\n"
         "  synonyms: string[];\n"
         "  chinese: string;\n"
@@ -126,9 +129,7 @@ def main() -> None:
         "  example: string;\n"
         "  explanation?: string;\n"
         "}\n\n"
-        f"export const vocabulary: VocabularyEntry[] = {payload};\n\n"
-        "export const categories = Array.from(new Set(vocabulary.map((item) => item.category))).sort();\n"
-        "export const scenarios: Scenario[] = [\"Reading\", \"Listening\", \"Writing\", \"Speaking\"];\n",
+        f"export const ieltsVocabulary: VocabularyEntry[] = {payload};\n",
         encoding="utf-8",
     )
     print(f"Wrote {len(entries)} entries to {OUTPUT}")

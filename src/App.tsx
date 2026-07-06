@@ -13,7 +13,7 @@ import {
   X,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
-import { categories, scenarios, vocabulary, type Scenario, type VocabularyEntry } from "./data/vocabulary";
+import { categories, groups, scenarios, vocabulary, type Scenario, type VocabularyEntry, type VocabularyGroup } from "./data";
 
 type Page = "dashboard" | "library" | "memorize" | "quiz" | "review";
 type StudyStatus = "new" | "learning" | "mastered" | "focus";
@@ -51,6 +51,18 @@ const statusOptions: Array<{ value: "all" | StudyStatus; label: string }> = [
   { value: "focus", label: "重点复习" },
 ];
 
+function answerText(entry: VocabularyEntry): string {
+  return entry.synonyms.length > 0 ? entry.synonyms.join(" / ") : entry.chinese;
+}
+
+function answerLabel(entry: VocabularyEntry): string {
+  return entry.group === "生物学专业名词" ? "专业释义" : "同义替换";
+}
+
+function firstAnswer(entry: VocabularyEntry): string {
+  return entry.synonyms[0] ?? entry.word;
+}
+
 function loadProgress(): Record<string, EntryProgress> {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -81,10 +93,25 @@ function uniqueOptions(answer: string, distractors: string[]): string[] {
 }
 
 function buildQuestion(entry: VocabularyEntry, allEntries: VocabularyEntry[]): QuizQuestion {
-  const type = shuffle<QuizQuestion["type"]>(["synonym", "chinese", "context"])[0];
-  const answer = type === "chinese" ? entry.word : entry.synonyms[0];
-  const synonymPool = allEntries.flatMap((item) => item.synonyms);
-  const wordPool = allEntries.map((item) => item.word);
+  const availableTypes: QuizQuestion["type"][] =
+    entry.group === "生物学专业名词" ? ["chinese", "context"] : ["synonym", "chinese", "context"];
+  const type = shuffle<QuizQuestion["type"]>(availableTypes)[0];
+  const answer = type === "chinese" || entry.group === "生物学专业名词" ? entry.word : firstAnswer(entry);
+  const sameGroupEntries = allEntries.filter((item) => item.group === entry.group);
+  const synonymPool = sameGroupEntries.flatMap((item) => (item.synonyms.length > 0 ? item.synonyms : [item.word]));
+  const wordPool = sameGroupEntries.map((item) => item.word);
+
+  if (entry.group === "生物学专业名词") {
+    return {
+      id: `${entry.id}-${type}-${Date.now()}`,
+      type,
+      entry,
+      prompt: type === "chinese" ? `“${entry.chinese}” 对应的英文专业术语是？` : `${entry.explanation}`,
+      options: uniqueOptions(answer, wordPool),
+      answer,
+      explanation: `${entry.word}: ${entry.chinese}。${entry.explanation ?? ""}`,
+    };
+  }
 
   if (type === "chinese") {
     return {
@@ -94,7 +121,7 @@ function buildQuestion(entry: VocabularyEntry, allEntries: VocabularyEntry[]): Q
       prompt: `“${entry.chinese}” 对应的英文表达是？`,
       options: uniqueOptions(answer, wordPool),
       answer,
-      explanation: `${entry.word} 的常见同义替换：${entry.synonyms.join(" / ")}`,
+      explanation: `${entry.word} 的常见同义替换：${answerText(entry)}`,
     };
   }
 
@@ -103,10 +130,10 @@ function buildQuestion(entry: VocabularyEntry, allEntries: VocabularyEntry[]): Q
       id: `${entry.id}-context-${Date.now()}`,
       type,
       entry,
-      prompt: entry.example.replace(`'${entry.synonyms[0]}'`, "____"),
+      prompt: entry.example.replace(`'${firstAnswer(entry)}'`, "____"),
       options: uniqueOptions(answer, synonymPool),
       answer,
-      explanation: entry.explanation ?? `${entry.word} 可以替换为 ${entry.synonyms.join(" / ")}`,
+      explanation: entry.explanation ?? `${entry.word} 可以替换为 ${answerText(entry)}`,
     };
   }
 
@@ -135,6 +162,8 @@ function App() {
     const focus = vocabulary.filter((item) => getProgress(progress, item.id).status === "focus").length;
     const learning = vocabulary.filter((item) => getProgress(progress, item.id).status === "learning").length;
     const wrong = vocabulary.filter((item) => getProgress(progress, item.id).wrong > 0).length;
+    const ielts = vocabulary.filter((item) => item.group === "雅思同义替换").length;
+    const biology = vocabulary.filter((item) => item.group === "生物学专业名词").length;
     return {
       total: vocabulary.length,
       mastered,
@@ -142,6 +171,8 @@ function App() {
       focus,
       learning,
       wrong,
+      ielts,
+      biology,
       today: Math.min(Math.max(focus + wrong + learning, 20), vocabulary.length),
     };
   }, [progress]);
@@ -187,8 +218,8 @@ function App() {
         <div className="brand">
           <div className="brand-mark">IELTS</div>
           <div>
-            <strong>同义替换背诵</strong>
-            <span>538 考点词库</span>
+            <strong>词库背诵</strong>
+            <span>IELTS + Biology</span>
           </div>
         </div>
         <nav className="nav-list">
@@ -260,7 +291,16 @@ function Dashboard({
   setPage,
   openMemorize,
 }: {
-  stats: { total: number; mastered: number; unmastered: number; today: number; focus: number; wrong: number };
+  stats: {
+    total: number;
+    mastered: number;
+    unmastered: number;
+    today: number;
+    focus: number;
+    wrong: number;
+    ielts: number;
+    biology: number;
+  };
   setPage: (page: Page) => void;
   openMemorize: (onlyReview?: boolean) => void;
 }) {
@@ -268,7 +308,7 @@ function Dashboard({
     <section className="page-stack">
       <header className="page-header">
         <p>Dashboard</p>
-        <h1>今天背一点，同义替换会越来越顺手。</h1>
+        <h1>今天背一点，同义替换和专业术语都会越来越顺手。</h1>
       </header>
 
       <div className="metric-grid">
@@ -303,6 +343,14 @@ function Dashboard({
           <strong>{stats.wrong}</strong>
           <span>曾经答错词条</span>
         </div>
+        <div>
+          <strong>{stats.ielts}</strong>
+          <span>雅思同义替换</span>
+        </div>
+        <div>
+          <strong>{stats.biology}</strong>
+          <span>生物学专业名词</span>
+        </div>
       </div>
     </section>
   );
@@ -325,6 +373,7 @@ function Library({
   updateProgress: (id: string, patch: Partial<EntryProgress>) => void;
 }) {
   const [query, setQuery] = useState("");
+  const [group, setGroup] = useState<"all" | VocabularyGroup>("all");
   const [category, setCategory] = useState("all");
   const [scenario, setScenario] = useState<"all" | Scenario>("all");
   const [status, setStatus] = useState<"all" | StudyStatus>("all");
@@ -333,17 +382,18 @@ function Library({
     const q = query.trim().toLowerCase();
     return vocabulary.filter((item) => {
       const itemProgress = getProgress(progress, item.id);
-      const searchable = [item.word, item.chinese, item.example, item.category, item.scenario, ...item.synonyms]
+      const searchable = [item.group, item.word, item.chinese, item.example, item.category, item.scenario, ...item.synonyms]
         .join(" ")
         .toLowerCase();
       return (
         (!q || searchable.includes(q)) &&
+        (group === "all" || item.group === group) &&
         (category === "all" || item.category === category) &&
         (scenario === "all" || item.scenario === scenario) &&
         (status === "all" || itemProgress.status === status)
       );
     });
-  }, [category, progress, query, scenario, status]);
+  }, [category, group, progress, query, scenario, status]);
 
   return (
     <section className="page-stack">
@@ -360,6 +410,14 @@ function Library({
           <Search size={18} />
           <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="搜索英文、同义词或中文释义" />
         </label>
+        <select value={group} onChange={(event) => setGroup(event.target.value as "all" | VocabularyGroup)}>
+          <option value="all">全部分组</option>
+          {groups.map((item) => (
+            <option key={item} value={item}>
+              {item}
+            </option>
+          ))}
+        </select>
         <select value={category} onChange={(event) => setCategory(event.target.value)}>
           <option value="all">全部主题</option>
           {categories.map((item) => (
@@ -397,9 +455,13 @@ function Library({
                 </div>
                 <span className={`status-pill status-${itemProgress.status}`}>{statusLabels[itemProgress.status]}</span>
               </div>
-              <div className="synonym-line">{item.synonyms.join(" / ")}</div>
+              <div className="synonym-line">
+                <span>{answerLabel(item)}：</span>
+                {answerText(item)}
+              </div>
               <p className="example">{item.example}</p>
               <div className="meta-line">
+                <span>{item.group}</span>
                 <span>{item.category}</span>
                 <span>{item.scenario}</span>
                 <span>错题 {itemProgress.wrong}</span>
@@ -504,7 +566,7 @@ function Memorization({
         ) : (
           <div className="flash-back">
             <span>{entry.category} · {entry.scenario}</span>
-            <h2>{entry.synonyms.join(" / ")}</h2>
+            <h2>{answerText(entry)}</h2>
             <p>{entry.chinese}</p>
             <blockquote>{entry.example}</blockquote>
           </div>
@@ -723,9 +785,9 @@ function Review({
                   <strong>{item.word}</strong>
                   <span className={`status-pill status-${itemProgress.status}`}>{statusLabels[itemProgress.status]}</span>
                 </div>
-                <p>{item.synonyms.join(" / ")}</p>
+                <p>{answerText(item)}</p>
                 <span>{item.chinese}</span>
-                <small>答错 {itemProgress.wrong} 次 · {item.category}</small>
+                <small>答错 {itemProgress.wrong} 次 · {item.group} · {item.category}</small>
                 <div className="card-actions">
                   <button onClick={() => updateProgress(item.id, { status: "mastered", wrong: 0 })}>
                     <Check size={16} />

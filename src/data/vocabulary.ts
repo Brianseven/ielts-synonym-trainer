@@ -1,7 +1,9 @@
-export type Scenario = "Reading" | "Listening" | "Writing" | "Speaking";
+export type Scenario = "Reading" | "Listening" | "Writing" | "Speaking" | "Biology";
+export type VocabularyGroup = "雅思同义替换" | "生物学专业名词";
 
 export interface VocabularyEntry {
   id: string;
+  group: VocabularyGroup;
   word: string;
   synonyms: string[];
   chinese: string;
@@ -11,9 +13,10 @@ export interface VocabularyEntry {
   explanation?: string;
 }
 
-export const vocabulary: VocabularyEntry[] = [
+export const ieltsVocabulary: VocabularyEntry[] = [
   {
     "id": "ielts-001",
+    "group": "雅思同义替换",
     "word": "resemble",
     "synonyms": [
       "like",
@@ -28,6 +31,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-002",
+    "group": "雅思同义替换",
     "word": "recognize",
     "synonyms": [
       "perceive",
@@ -48,6 +52,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-003",
+    "group": "雅思同义替换",
     "word": "adjust",
     "synonyms": [
       "change",
@@ -63,6 +68,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-004",
+    "group": "雅思同义替换",
     "word": "approach",
     "synonyms": [
       "method",
@@ -76,6 +82,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-005",
+    "group": "雅思同义替换",
     "word": "fundamental",
     "synonyms": [
       "rudimentary",
@@ -90,6 +97,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-006",
+    "group": "雅思同义替换",
     "word": "rely on",
     "synonyms": [
       "depend on"
@@ -102,6 +110,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-007",
+    "group": "雅思同义替换",
     "word": "domestic",
     "synonyms": [
       "home",
@@ -116,6 +125,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-008",
+    "group": "雅思同义替换",
     "word": "measure",
     "synonyms": [
       "calculate",
@@ -130,6 +140,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-009",
+    "group": "雅思同义替换",
     "word": "trait",
     "synonyms": [
       "characteristic",
@@ -144,6 +155,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-010",
+    "group": "雅思同义替换",
     "word": "coin",
     "synonyms": [
       "first used",
@@ -157,6 +169,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-011",
+    "group": "雅思同义替换",
     "word": "artificial",
     "synonyms": [
       "synthetic",
@@ -170,6 +183,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-012",
+    "group": "雅思同义替换",
     "word": "prompt",
     "synonyms": [
       "initiate",
@@ -183,6 +197,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-013",
+    "group": "雅思同义替换",
     "word": "exchange",
     "synonyms": [
       "share",
@@ -196,6 +211,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-014",
+    "group": "雅思同义替换",
     "word": "underlie",
     "synonyms": [
       "based on",
@@ -210,6 +226,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-015",
+    "group": "雅思同义替换",
     "word": "ignore",
     "synonyms": [
       "neglect",
@@ -224,6 +241,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-016",
+    "group": "雅思同义替换",
     "word": "fertilizer",
     "synonyms": [
       "chemical",
@@ -238,6 +256,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-017",
+    "group": "雅思同义替换",
     "word": "that",
     "synonyms": [
       "this",
@@ -255,6 +274,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-018",
+    "group": "雅思同义替换",
     "word": "and",
     "synonyms": [
       "or",
@@ -275,6 +295,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-019",
+    "group": "雅思同义替换",
     "word": "rather than",
     "synonyms": [
       "but",
@@ -296,6 +317,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-020",
+    "group": "雅思同义替换",
     "word": "thanks to",
     "synonyms": [
       "stem from",
@@ -322,6 +344,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-021",
+    "group": "雅思同义替换",
     "word": "diversity",
     "synonyms": [
       "variety",
@@ -335,6 +358,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-022",
+    "group": "雅思同义替换",
     "word": "detect",
     "synonyms": [
       "look for",
@@ -350,6 +374,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-023",
+    "group": "雅思同义替换",
     "word": "isolate",
     "synonyms": [
       "inaccessible"
@@ -362,6 +387,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-024",
+    "group": "雅思同义替换",
     "word": "avoid",
     "synonyms": [
       "escape",
@@ -375,6 +401,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-025",
+    "group": "雅思同义替换",
     "word": "budget",
     "synonyms": [
       "fund",
@@ -388,6 +415,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-026",
+    "group": "雅思同义替换",
     "word": "adapt to",
     "synonyms": [
       "fit",
@@ -401,6 +429,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-027",
+    "group": "雅思同义替换",
     "word": "alternative",
     "synonyms": [
       "subsitute"
@@ -413,6 +442,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-028",
+    "group": "雅思同义替换",
     "word": "compensate",
     "synonyms": [
       "make up",
@@ -426,6 +456,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-029",
+    "group": "雅思同义替换",
     "word": "component",
     "synonyms": [
       "proportion"
@@ -438,6 +469,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-030",
+    "group": "雅思同义替换",
     "word": "military",
     "synonyms": [
       "weapon",
@@ -451,6 +483,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-031",
+    "group": "雅思同义替换",
     "word": "criteria",
     "synonyms": [
       "standard"
@@ -463,6 +496,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-032",
+    "group": "雅思同义替换",
     "word": "curriculum",
     "synonyms": [
       "syllabus",
@@ -476,6 +510,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-033",
+    "group": "雅思同义替换",
     "word": "feasible",
     "synonyms": [
       "viable",
@@ -489,6 +524,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-034",
+    "group": "雅思同义替换",
     "word": "constrain",
     "synonyms": [
       "stop",
@@ -502,6 +538,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-035",
+    "group": "雅思同义替换",
     "word": "deficiency",
     "synonyms": [
       "shortage",
@@ -516,6 +553,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-036",
+    "group": "雅思同义替换",
     "word": "supplement",
     "synonyms": [
       "provision"
@@ -528,6 +566,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-037",
+    "group": "雅思同义替换",
     "word": "distinguish",
     "synonyms": [
       "separete",
@@ -541,6 +580,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-038",
+    "group": "雅思同义替换",
     "word": "analyze",
     "synonyms": [
       "examine",
@@ -554,6 +594,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-039",
+    "group": "雅思同义替换",
     "word": "empharsize",
     "synonyms": [
       "focus on",
@@ -567,6 +608,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-040",
+    "group": "雅思同义替换",
     "word": "enormous",
     "synonyms": [
       "massive",
@@ -580,6 +622,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-041",
+    "group": "雅思同义替换",
     "word": "imitate",
     "synonyms": [
       "mimic",
@@ -593,6 +636,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-042",
+    "group": "雅思同义替换",
     "word": "impair",
     "synonyms": [
       "damage",
@@ -607,6 +651,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-043",
+    "group": "雅思同义替换",
     "word": "hinder",
     "synonyms": [
       "impede",
@@ -622,6 +667,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-044",
+    "group": "雅思同义替换",
     "word": "legitimate",
     "synonyms": [
       "legal"
@@ -634,6 +680,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-045",
+    "group": "雅思同义替换",
     "word": "limitation",
     "synonyms": [
       "restriction"
@@ -646,6 +693,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-046",
+    "group": "雅思同义替换",
     "word": "convention",
     "synonyms": [
       "method",
@@ -659,6 +707,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-047",
+    "group": "雅思同义替换",
     "word": "demanding",
     "synonyms": [
       "troublesome"
@@ -671,6 +720,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-048",
+    "group": "雅思同义替换",
     "word": "determine",
     "synonyms": [
       "decide"
@@ -683,6 +733,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-049",
+    "group": "雅思同义替换",
     "word": "accelerate",
     "synonyms": [
       "speed up"
@@ -695,6 +746,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-050",
+    "group": "雅思同义替换",
     "word": "ancient",
     "synonyms": [
       "aged",
@@ -708,6 +760,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-051",
+    "group": "雅思同义替换",
     "word": "beneficial",
     "synonyms": [
       "helpful",
@@ -722,6 +775,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-052",
+    "group": "雅思同义替换",
     "word": "chronic",
     "synonyms": [
       "lasting"
@@ -734,6 +788,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-053",
+    "group": "雅思同义替换",
     "word": "conscious",
     "synonyms": [
       "aware",
@@ -747,6 +802,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-054",
+    "group": "雅思同义替换",
     "word": "minimize",
     "synonyms": [
       "reduce",
@@ -760,6 +816,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-055",
+    "group": "雅思同义替换",
     "word": "immunity",
     "synonyms": [
       "resistance"
@@ -772,6 +829,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-056",
+    "group": "雅思同义替换",
     "word": "imperactive",
     "synonyms": [
       "compelling",
@@ -786,6 +844,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-057",
+    "group": "雅思同义替换",
     "word": "secrete",
     "synonyms": [
       "discharge",
@@ -799,6 +858,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-058",
+    "group": "雅思同义替换",
     "word": "exaggerate",
     "synonyms": [
       "overstate"
@@ -811,6 +871,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-059",
+    "group": "雅思同义替换",
     "word": "transmit",
     "synonyms": [
       "pass",
@@ -825,6 +886,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-060",
+    "group": "雅思同义替换",
     "word": "extinct",
     "synonyms": [
       "die out",
@@ -838,6 +900,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-061",
+    "group": "雅思同义替换",
     "word": "exclusive",
     "synonyms": [
       "only"
@@ -850,6 +913,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-062",
+    "group": "雅思同义替换",
     "word": "guarantee",
     "synonyms": [
       "assure"
@@ -862,6 +926,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-063",
+    "group": "雅思同义替换",
     "word": "inherit",
     "synonyms": [
       "receive"
@@ -874,6 +939,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-064",
+    "group": "雅思同义替换",
     "word": "witness",
     "synonyms": [
       "view",
@@ -887,6 +953,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-065",
+    "group": "雅思同义替换",
     "word": "magnetic",
     "synonyms": [
       "attractive"
@@ -899,6 +966,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-066",
+    "group": "雅思同义替换",
     "word": "loss",
     "synonyms": [
       "waste",
@@ -912,6 +980,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-067",
+    "group": "雅思同义替换",
     "word": "option",
     "synonyms": [
       "choice"
@@ -924,6 +993,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-068",
+    "group": "雅思同义替换",
     "word": "prefer to",
     "synonyms": [
       "rather"
@@ -936,6 +1006,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-069",
+    "group": "雅思同义替换",
     "word": "priority",
     "synonyms": [
       "preference",
@@ -949,6 +1020,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-070",
+    "group": "雅思同义替换",
     "word": "primary",
     "synonyms": [
       "principal",
@@ -962,6 +1034,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-071",
+    "group": "雅思同义替换",
     "word": "principle",
     "synonyms": [
       "rule"
@@ -974,6 +1047,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-072",
+    "group": "雅思同义替换",
     "word": "potential",
     "synonyms": [
       "possibility"
@@ -986,6 +1060,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-073",
+    "group": "雅思同义替换",
     "word": "quantity",
     "synonyms": [
       "number"
@@ -998,6 +1073,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-074",
+    "group": "雅思同义替换",
     "word": "settle",
     "synonyms": [
       "fix",
@@ -1011,6 +1087,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-075",
+    "group": "雅思同义替换",
     "word": "sophistiate",
     "synonyms": [
       "complicate"
@@ -1023,6 +1100,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-076",
+    "group": "雅思同义替换",
     "word": "specific",
     "synonyms": [
       "detailed",
@@ -1036,6 +1114,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-077",
+    "group": "雅思同义替换",
     "word": "survive",
     "synonyms": [
       "remain"
@@ -1048,6 +1127,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-078",
+    "group": "雅思同义替换",
     "word": "swift",
     "synonyms": [
       "quick",
@@ -1061,6 +1141,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-079",
+    "group": "雅思同义替换",
     "word": "unexpectedly",
     "synonyms": [
       "surprising"
@@ -1073,6 +1154,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-080",
+    "group": "雅思同义替换",
     "word": "surrounding",
     "synonyms": [
       "setting",
@@ -1086,6 +1168,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-081",
+    "group": "雅思同义替换",
     "word": "attempt",
     "synonyms": [
       "try",
@@ -1099,6 +1182,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-082",
+    "group": "雅思同义替换",
     "word": "expertise",
     "synonyms": [
       "knowledge",
@@ -1112,6 +1196,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-083",
+    "group": "雅思同义替换",
     "word": "faculty",
     "synonyms": [
       "ability"
@@ -1124,6 +1209,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-084",
+    "group": "雅思同义替换",
     "word": "donate",
     "synonyms": [
       "contribute"
@@ -1136,6 +1222,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-085",
+    "group": "雅思同义替换",
     "word": "dynamics",
     "synonyms": [
       "energy",
@@ -1150,6 +1237,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-086",
+    "group": "雅思同义替换",
     "word": "incentive",
     "synonyms": [
       "motive",
@@ -1163,6 +1251,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-087",
+    "group": "雅思同义替换",
     "word": "mortality",
     "synonyms": [
       "death"
@@ -1175,6 +1264,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-088",
+    "group": "雅思同义替换",
     "word": "peripheral",
     "synonyms": [
       "unimportant",
@@ -1188,6 +1278,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-089",
+    "group": "雅思同义替换",
     "word": "vicinity",
     "synonyms": [
       "neighbourhood",
@@ -1201,6 +1292,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-090",
+    "group": "雅思同义替换",
     "word": "threaten",
     "synonyms": [
       "endanger",
@@ -1216,6 +1308,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-091",
+    "group": "雅思同义替换",
     "word": "practice",
     "synonyms": [
       "method",
@@ -1229,6 +1322,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-092",
+    "group": "雅思同义替换",
     "word": "bacteria",
     "synonyms": [
       "virus",
@@ -1243,6 +1337,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-093",
+    "group": "雅思同义替换",
     "word": "be subject to",
     "synonyms": [
       "face"
@@ -1255,6 +1350,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-094",
+    "group": "雅思同义替换",
     "word": "be liable to",
     "synonyms": [
       "portential"
@@ -1267,6 +1363,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-095",
+    "group": "雅思同义替换",
     "word": "innate",
     "synonyms": [
       "built-in",
@@ -1280,6 +1377,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-096",
+    "group": "雅思同义替换",
     "word": "pattern",
     "synonyms": [
       "formation"
@@ -1292,6 +1390,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-097",
+    "group": "雅思同义替换",
     "word": "therapy",
     "synonyms": [
       "treatment"
@@ -1304,6 +1403,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-098",
+    "group": "雅思同义替换",
     "word": "original",
     "synonyms": [
       "initial",
@@ -1317,6 +1417,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-099",
+    "group": "雅思同义替换",
     "word": "confidential",
     "synonyms": [
       "undiscovered",
@@ -1331,6 +1432,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-100",
+    "group": "雅思同义替换",
     "word": "cognitive",
     "synonyms": [
       "mental"
@@ -1343,6 +1445,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-101",
+    "group": "雅思同义替换",
     "word": "comply with",
     "synonyms": [
       "obey"
@@ -1355,6 +1458,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-102",
+    "group": "雅思同义替换",
     "word": "consult",
     "synonyms": [
       "ask for advice"
@@ -1367,6 +1471,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-103",
+    "group": "雅思同义替换",
     "word": "superior",
     "synonyms": [
       "higher",
@@ -1380,6 +1485,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-104",
+    "group": "雅思同义替换",
     "word": "co-operation",
     "synonyms": [
       "support",
@@ -1393,6 +1499,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-105",
+    "group": "雅思同义替换",
     "word": "co-ordinate",
     "synonyms": [
       "organize",
@@ -1406,6 +1513,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-106",
+    "group": "雅思同义替换",
     "word": "differ",
     "synonyms": [
       "vary"
@@ -1418,6 +1526,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-107",
+    "group": "雅思同义替换",
     "word": "cue",
     "synonyms": [
       "hint",
@@ -1431,6 +1540,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-108",
+    "group": "雅思同义替换",
     "word": "signal",
     "synonyms": [
       "symbol",
@@ -1445,6 +1555,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-109",
+    "group": "雅思同义替换",
     "word": "abandon",
     "synonyms": [
       "quit",
@@ -1460,6 +1571,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-110",
+    "group": "雅思同义替换",
     "word": "halt",
     "synonyms": [
       "stop",
@@ -1473,6 +1585,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-111",
+    "group": "雅思同义替换",
     "word": "fragile",
     "synonyms": [
       "vulnerable"
@@ -1485,6 +1598,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-112",
+    "group": "雅思同义替换",
     "word": "retain",
     "synonyms": [
       "maintain"
@@ -1497,6 +1611,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-113",
+    "group": "雅思同义替换",
     "word": "vanish",
     "synonyms": [
       "disappear"
@@ -1509,6 +1624,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-114",
+    "group": "雅思同义替换",
     "word": "delivery",
     "synonyms": [
       "send"
@@ -1521,6 +1637,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-115",
+    "group": "雅思同义替换",
     "word": "erode",
     "synonyms": [
       "rust",
@@ -1534,6 +1651,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-116",
+    "group": "雅思同义替换",
     "word": "induce",
     "synonyms": [
       "cause",
@@ -1547,6 +1665,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-117",
+    "group": "雅思同义替换",
     "word": "stable",
     "synonyms": [
       "constant",
@@ -1560,6 +1679,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-118",
+    "group": "雅思同义替换",
     "word": "integrate",
     "synonyms": [
       "combine",
@@ -1573,6 +1693,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-119",
+    "group": "雅思同义替换",
     "word": "equal",
     "synonyms": [
       "fair",
@@ -1586,6 +1707,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-120",
+    "group": "雅思同义替换",
     "word": "grant",
     "synonyms": [
       "offer"
@@ -1598,6 +1720,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-121",
+    "group": "雅思同义替换",
     "word": "accumulate",
     "synonyms": [
       "gather"
@@ -1610,6 +1733,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-122",
+    "group": "雅思同义替换",
     "word": "addictive",
     "synonyms": [
       "habit"
@@ -1622,6 +1746,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-123",
+    "group": "雅思同义替换",
     "word": "adversity",
     "synonyms": [
       "trouble"
@@ -1634,6 +1759,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-124",
+    "group": "雅思同义替换",
     "word": "aggression",
     "synonyms": [
       "attack"
@@ -1646,6 +1772,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-125",
+    "group": "雅思同义替换",
     "word": "agreeable",
     "synonyms": [
       "pleasant"
@@ -1658,6 +1785,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-126",
+    "group": "雅思同义替换",
     "word": "aid",
     "synonyms": [
       "help"
@@ -1670,6 +1798,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-127",
+    "group": "雅思同义替换",
     "word": "allergic",
     "synonyms": [
       "irritate"
@@ -1682,6 +1811,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-128",
+    "group": "雅思同义替换",
     "word": "altitude",
     "synonyms": [
       "height"
@@ -1694,6 +1824,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-129",
+    "group": "雅思同义替换",
     "word": "application",
     "synonyms": [
       "utilization"
@@ -1706,6 +1837,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-130",
+    "group": "雅思同义替换",
     "word": "approve",
     "synonyms": [
       "agree"
@@ -1718,6 +1850,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-131",
+    "group": "雅思同义替换",
     "word": "array",
     "synonyms": [
       "order"
@@ -1730,6 +1863,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-132",
+    "group": "雅思同义替换",
     "word": "assign",
     "synonyms": [
       "allocate"
@@ -1742,6 +1876,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-133",
+    "group": "雅思同义替换",
     "word": "association",
     "synonyms": [
       "union"
@@ -1754,6 +1889,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-134",
+    "group": "雅思同义替换",
     "word": "attitude",
     "synonyms": [
       "opinion"
@@ -1766,6 +1902,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-135",
+    "group": "雅思同义替换",
     "word": "authority",
     "synonyms": [
       "government"
@@ -1778,6 +1915,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-136",
+    "group": "雅思同义替换",
     "word": "be consistent with",
     "synonyms": [
       "compatible"
@@ -1790,6 +1928,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-137",
+    "group": "雅思同义替换",
     "word": "bear",
     "synonyms": [
       "tolerate"
@@ -1802,6 +1941,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-138",
+    "group": "雅思同义替换",
     "word": "blight",
     "synonyms": [
       "destroy"
@@ -1814,6 +1954,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-139",
+    "group": "雅思同义替换",
     "word": "boundary",
     "synonyms": [
       "barrier"
@@ -1826,6 +1967,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-140",
+    "group": "雅思同义替换",
     "word": "bungle",
     "synonyms": [
       "mishandle"
@@ -1838,6 +1980,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-141",
+    "group": "雅思同义替换",
     "word": "burden",
     "synonyms": [
       "load"
@@ -1850,6 +1993,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-142",
+    "group": "雅思同义替换",
     "word": "calamity",
     "synonyms": [
       "disaster"
@@ -1862,6 +2006,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-143",
+    "group": "雅思同义替换",
     "word": "capacity",
     "synonyms": [
       "volume"
@@ -1874,6 +2019,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-144",
+    "group": "雅思同义替换",
     "word": "catastrophic",
     "synonyms": [
       "disastrous"
@@ -1886,6 +2032,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-145",
+    "group": "雅思同义替换",
     "word": "cater",
     "synonyms": [
       "serve"
@@ -1898,6 +2045,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-146",
+    "group": "雅思同义替换",
     "word": "certify",
     "synonyms": [
       "verify"
@@ -1910,6 +2058,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-147",
+    "group": "雅思同义替换",
     "word": "civic",
     "synonyms": [
       "municipal"
@@ -1922,6 +2071,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-148",
+    "group": "雅思同义替换",
     "word": "comment",
     "synonyms": [
       "remark"
@@ -1934,6 +2084,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-149",
+    "group": "雅思同义替换",
     "word": "commiment",
     "synonyms": [
       "engagement"
@@ -1946,6 +2097,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-150",
+    "group": "雅思同义替换",
     "word": "communal",
     "synonyms": [
       "public"
@@ -1958,6 +2110,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-151",
+    "group": "雅思同义替换",
     "word": "commute",
     "synonyms": [
       "travel"
@@ -1970,6 +2123,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-152",
+    "group": "雅思同义替换",
     "word": "compare",
     "synonyms": [
       "contrast"
@@ -1982,6 +2136,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-153",
+    "group": "雅思同义替换",
     "word": "conceal",
     "synonyms": [
       "hide"
@@ -1994,6 +2149,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-154",
+    "group": "雅思同义替换",
     "word": "concentrate",
     "synonyms": [
       "focus"
@@ -2006,6 +2162,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-155",
+    "group": "雅思同义替换",
     "word": "concur",
     "synonyms": [
       "agree"
@@ -2018,6 +2175,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-156",
+    "group": "雅思同义替换",
     "word": "confer",
     "synonyms": [
       "grant"
@@ -2030,6 +2188,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-157",
+    "group": "雅思同义替换",
     "word": "conflict",
     "synonyms": [
       "unharmonious"
@@ -2042,6 +2201,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-158",
+    "group": "雅思同义替换",
     "word": "confuse",
     "synonyms": [
       "puzzle"
@@ -2054,6 +2214,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-159",
+    "group": "雅思同义替换",
     "word": "conservative",
     "synonyms": [
       "traditional"
@@ -2066,6 +2227,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-160",
+    "group": "雅思同义替换",
     "word": "considerable",
     "synonyms": [
       "significant"
@@ -2078,6 +2240,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-161",
+    "group": "雅思同义替换",
     "word": "contingent",
     "synonyms": [
       "uncertain"
@@ -2090,6 +2253,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-162",
+    "group": "雅思同义替换",
     "word": "controversial",
     "synonyms": [
       "disputable"
@@ -2102,6 +2266,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-163",
+    "group": "雅思同义替换",
     "word": "correlation",
     "synonyms": [
       "link"
@@ -2114,6 +2279,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-164",
+    "group": "雅思同义替换",
     "word": "courtship",
     "synonyms": [
       "mate"
@@ -2126,6 +2292,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-165",
+    "group": "雅思同义替换",
     "word": "crash",
     "synonyms": [
       "collapse"
@@ -2138,6 +2305,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-166",
+    "group": "雅思同义替换",
     "word": "credibility",
     "synonyms": [
       "reliance"
@@ -2150,6 +2318,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-167",
+    "group": "雅思同义替换",
     "word": "criminal",
     "synonyms": [
       "conviction"
@@ -2162,6 +2331,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-168",
+    "group": "雅思同义替换",
     "word": "crisis",
     "synonyms": [
       "risk"
@@ -2174,6 +2344,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-169",
+    "group": "雅思同义替换",
     "word": "criticism",
     "synonyms": [
       "condemn"
@@ -2186,6 +2357,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-170",
+    "group": "雅思同义替换",
     "word": "curb",
     "synonyms": [
       "restrict"
@@ -2198,6 +2370,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-171",
+    "group": "雅思同义替换",
     "word": "damp",
     "synonyms": [
       "wet"
@@ -2210,6 +2383,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-172",
+    "group": "雅思同义替换",
     "word": "dazzle",
     "synonyms": [
       "flash"
@@ -2222,6 +2396,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-173",
+    "group": "雅思同义替换",
     "word": "deadline",
     "synonyms": [
       "limite"
@@ -2234,6 +2409,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-174",
+    "group": "雅思同义替换",
     "word": "delay",
     "synonyms": [
       "postpone"
@@ -2246,6 +2422,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-175",
+    "group": "雅思同义替换",
     "word": "democratic",
     "synonyms": [
       "republic"
@@ -2258,6 +2435,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-176",
+    "group": "雅思同义替换",
     "word": "demographic",
     "synonyms": [
       "populaiton statistic"
@@ -2270,6 +2448,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-177",
+    "group": "雅思同义替换",
     "word": "dental",
     "synonyms": [
       "teeth"
@@ -2282,6 +2461,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-178",
+    "group": "雅思同义替换",
     "word": "depression",
     "synonyms": [
       "frustration"
@@ -2294,6 +2474,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-179",
+    "group": "雅思同义替换",
     "word": "designate",
     "synonyms": [
       "appoint"
@@ -2306,6 +2487,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-180",
+    "group": "雅思同义替换",
     "word": "detain",
     "synonyms": [
       "hold"
@@ -2318,6 +2500,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-181",
+    "group": "雅思同义替换",
     "word": "devastate",
     "synonyms": [
       "wreck"
@@ -2330,6 +2513,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-182",
+    "group": "雅思同义替换",
     "word": "disclose",
     "synonyms": [
       "expose"
@@ -2342,6 +2526,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-183",
+    "group": "雅思同义替换",
     "word": "disparate",
     "synonyms": [
       "different"
@@ -2354,6 +2539,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-184",
+    "group": "雅思同义替换",
     "word": "display",
     "synonyms": [
       "show"
@@ -2366,6 +2552,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-185",
+    "group": "雅思同义替换",
     "word": "disrupt",
     "synonyms": [
       "distroy"
@@ -2378,6 +2565,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-186",
+    "group": "雅思同义替换",
     "word": "distract",
     "synonyms": [
       "divert"
@@ -2390,6 +2578,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-187",
+    "group": "雅思同义替换",
     "word": "distribute",
     "synonyms": [
       "spread"
@@ -2402,6 +2591,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-188",
+    "group": "雅思同义替换",
     "word": "documention",
     "synonyms": [
       "record"
@@ -2414,6 +2604,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-189",
+    "group": "雅思同义替换",
     "word": "domain",
     "synonyms": [
       "field"
@@ -2426,6 +2617,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-190",
+    "group": "雅思同义替换",
     "word": "dominate",
     "synonyms": [
       "overbearing"
@@ -2438,6 +2630,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-191",
+    "group": "雅思同义替换",
     "word": "dramatic",
     "synonyms": [
       "striking"
@@ -2450,6 +2643,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-192",
+    "group": "雅思同义替换",
     "word": "drought",
     "synonyms": [
       "dry"
@@ -2462,6 +2656,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-193",
+    "group": "雅思同义替换",
     "word": "durable",
     "synonyms": [
       "lasting"
@@ -2474,6 +2669,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-194",
+    "group": "雅思同义替换",
     "word": "eco-friendly",
     "synonyms": [
       "environmentally-friendly"
@@ -2486,6 +2682,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-195",
+    "group": "雅思同义替换",
     "word": "elaborate",
     "synonyms": [
       "illustrate"
@@ -2498,6 +2695,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-196",
+    "group": "雅思同义替换",
     "word": "elderly",
     "synonyms": [
       "aged"
@@ -2510,6 +2708,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-197",
+    "group": "雅思同义替换",
     "word": "eliminate",
     "synonyms": [
       "dispose"
@@ -2522,6 +2721,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-198",
+    "group": "雅思同义替换",
     "word": "elusive",
     "synonyms": [
       "hard"
@@ -2534,6 +2734,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-199",
+    "group": "雅思同义替换",
     "word": "encyclopedia",
     "synonyms": [
       "entire range of knowledge"
@@ -2546,6 +2747,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-200",
+    "group": "雅思同义替换",
     "word": "entrepreneur",
     "synonyms": [
       "boss"
@@ -2558,6 +2760,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-201",
+    "group": "雅思同义替换",
     "word": "equator",
     "synonyms": [
       "geography"
@@ -2570,6 +2773,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-202",
+    "group": "雅思同义替换",
     "word": "erratically",
     "synonyms": [
       "unpredictably"
@@ -2582,6 +2786,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-203",
+    "group": "雅思同义替换",
     "word": "established",
     "synonyms": [
       "built"
@@ -2594,6 +2799,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-204",
+    "group": "雅思同义替换",
     "word": "estate",
     "synonyms": [
       "property"
@@ -2606,6 +2812,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-205",
+    "group": "雅思同义替换",
     "word": "ethical",
     "synonyms": [
       "moral"
@@ -2618,6 +2825,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-206",
+    "group": "雅思同义替换",
     "word": "eventually",
     "synonyms": [
       "finally"
@@ -2630,6 +2838,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-207",
+    "group": "雅思同义替换",
     "word": "evidence",
     "synonyms": [
       "proof"
@@ -2642,6 +2851,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-208",
+    "group": "雅思同义替换",
     "word": "evolve",
     "synonyms": [
       "develop"
@@ -2654,6 +2864,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-209",
+    "group": "雅思同义替换",
     "word": "exceptional",
     "synonyms": [
       "extreme",
@@ -2667,6 +2878,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-210",
+    "group": "雅思同义替换",
     "word": "exhausted",
     "synonyms": [
       "fatigue"
@@ -2679,6 +2891,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-211",
+    "group": "雅思同义替换",
     "word": "experiment",
     "synonyms": [
       "test"
@@ -2691,6 +2904,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-212",
+    "group": "雅思同义替换",
     "word": "explicit",
     "synonyms": [
       "clear"
@@ -2703,6 +2917,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-213",
+    "group": "雅思同义替换",
     "word": "exploit",
     "synonyms": [
       "use"
@@ -2715,6 +2930,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-214",
+    "group": "雅思同义替换",
     "word": "extend",
     "synonyms": [
       "expand"
@@ -2727,6 +2943,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-215",
+    "group": "雅思同义替换",
     "word": "extract",
     "synonyms": [
       "quotaition"
@@ -2739,6 +2956,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-216",
+    "group": "雅思同义替换",
     "word": "famine",
     "synonyms": [
       "hunger"
@@ -2751,6 +2969,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-217",
+    "group": "雅思同义替换",
     "word": "finite",
     "synonyms": [
       "limited"
@@ -2763,6 +2982,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-218",
+    "group": "雅思同义替换",
     "word": "fitness",
     "synonyms": [
       "heath"
@@ -2775,6 +2995,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-219",
+    "group": "雅思同义替换",
     "word": "foe",
     "synonyms": [
       "enemy"
@@ -2787,6 +3008,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-220",
+    "group": "雅思同义替换",
     "word": "format",
     "synonyms": [
       "structure"
@@ -2799,6 +3021,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-221",
+    "group": "雅思同义替换",
     "word": "fragment",
     "synonyms": [
       "piece"
@@ -2811,6 +3034,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-222",
+    "group": "雅思同义替换",
     "word": "freeze",
     "synonyms": [
       "chill"
@@ -2823,6 +3047,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-223",
+    "group": "雅思同义替换",
     "word": "fullfill",
     "synonyms": [
       "execute"
@@ -2835,6 +3060,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-224",
+    "group": "雅思同义替换",
     "word": "gene",
     "synonyms": [
       "factor"
@@ -2847,6 +3073,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-225",
+    "group": "雅思同义替换",
     "word": "gifted",
     "synonyms": [
       "talented"
@@ -2859,6 +3086,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-226",
+    "group": "雅思同义替换",
     "word": "graphic",
     "synonyms": [
       "picture"
@@ -2871,6 +3099,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-227",
+    "group": "雅思同义替换",
     "word": "habitat",
     "synonyms": [
       "residence"
@@ -2883,6 +3112,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-228",
+    "group": "雅思同义替换",
     "word": "harbour",
     "synonyms": [
       "hold"
@@ -2895,6 +3125,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-229",
+    "group": "雅思同义替换",
     "word": "hardship",
     "synonyms": [
       "difficult"
@@ -2907,6 +3138,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-230",
+    "group": "雅思同义替换",
     "word": "harsh",
     "synonyms": [
       "rough"
@@ -2919,6 +3151,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-231",
+    "group": "雅思同义替换",
     "word": "hypothesis",
     "synonyms": [
       "assumption"
@@ -2931,6 +3164,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-232",
+    "group": "雅思同义替换",
     "word": "impact",
     "synonyms": [
       "influence"
@@ -2943,6 +3177,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-233",
+    "group": "雅思同义替换",
     "word": "impressive",
     "synonyms": [
       "touching"
@@ -2955,6 +3190,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-234",
+    "group": "雅思同义替换",
     "word": "in accordance with",
     "synonyms": [
       "conform"
@@ -2967,6 +3203,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-235",
+    "group": "雅思同义替换",
     "word": "inaccurate",
     "synonyms": [
       "incorrect"
@@ -2979,6 +3216,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-236",
+    "group": "雅思同义替换",
     "word": "inactive",
     "synonyms": [
       "passive"
@@ -2991,6 +3229,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-237",
+    "group": "雅思同义替换",
     "word": "inappropriate",
     "synonyms": [
       "hard"
@@ -3003,6 +3242,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-238",
+    "group": "雅思同义替换",
     "word": "indulge",
     "synonyms": [
       "spoil"
@@ -3015,6 +3255,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-239",
+    "group": "雅思同义替换",
     "word": "infest",
     "synonyms": [
       "plague"
@@ -3027,6 +3268,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-240",
+    "group": "雅思同义替换",
     "word": "installment",
     "synonyms": [
       "payment on its completion"
@@ -3039,6 +3281,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-241",
+    "group": "雅思同义替换",
     "word": "intelligence",
     "synonyms": [
       "mind"
@@ -3051,6 +3294,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-242",
+    "group": "雅思同义替换",
     "word": "intense",
     "synonyms": [
       "strong"
@@ -3063,6 +3307,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-243",
+    "group": "雅思同义替换",
     "word": "interaction",
     "synonyms": [
       "social activities"
@@ -3075,6 +3320,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-244",
+    "group": "雅思同义替换",
     "word": "interference",
     "synonyms": [
       "interdependence"
@@ -3087,6 +3333,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-245",
+    "group": "雅思同义替换",
     "word": "interior",
     "synonyms": [
       "inner"
@@ -3099,6 +3346,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-246",
+    "group": "雅思同义替换",
     "word": "interrupt",
     "synonyms": [
       "stop"
@@ -3111,6 +3359,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-247",
+    "group": "雅思同义替换",
     "word": "introverted",
     "synonyms": [
       "shyness"
@@ -3123,6 +3372,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-248",
+    "group": "雅思同义替换",
     "word": "involve",
     "synonyms": [
       "associate"
@@ -3135,6 +3385,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-249",
+    "group": "雅思同义替换",
     "word": "keen",
     "synonyms": [
       "strong"
@@ -3147,6 +3398,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-250",
+    "group": "雅思同义替换",
     "word": "label",
     "synonyms": [
       "display"
@@ -3159,6 +3411,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-251",
+    "group": "雅思同义替换",
     "word": "lack",
     "synonyms": [
       "shortage"
@@ -3171,6 +3424,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-252",
+    "group": "雅思同义替换",
     "word": "landscape",
     "synonyms": [
       "scene"
@@ -3183,6 +3437,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-253",
+    "group": "雅思同义替换",
     "word": "likelihood",
     "synonyms": [
       "chance"
@@ -3195,6 +3450,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-254",
+    "group": "雅思同义替换",
     "word": "limb",
     "synonyms": [
       "arm or leg"
@@ -3207,6 +3463,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-255",
+    "group": "雅思同义替换",
     "word": "linguistic",
     "synonyms": [
       "language"
@@ -3219,6 +3476,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-256",
+    "group": "雅思同义替换",
     "word": "log",
     "synonyms": [
       "record"
@@ -3231,6 +3489,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-257",
+    "group": "雅思同义替换",
     "word": "look-in",
     "synonyms": [
       "opportunity",
@@ -3244,6 +3503,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-258",
+    "group": "雅思同义替换",
     "word": "lopsided",
     "synonyms": [
       "uneven"
@@ -3256,6 +3516,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-259",
+    "group": "雅思同义替换",
     "word": "mainly",
     "synonyms": [
       "primary"
@@ -3268,6 +3529,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-260",
+    "group": "雅思同义替换",
     "word": "malfunction",
     "synonyms": [
       "breakdown"
@@ -3280,6 +3542,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-261",
+    "group": "雅思同义替换",
     "word": "mammal",
     "synonyms": [
       "creature"
@@ -3292,6 +3555,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-262",
+    "group": "雅思同义替换",
     "word": "manage to do",
     "synonyms": [
       "success"
@@ -3304,6 +3568,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-263",
+    "group": "雅思同义替换",
     "word": "manifest",
     "synonyms": [
       "obvious"
@@ -3316,6 +3581,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-264",
+    "group": "雅思同义替换",
     "word": "manufacture",
     "synonyms": [
       "produce"
@@ -3328,6 +3594,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-265",
+    "group": "雅思同义替换",
     "word": "marine",
     "synonyms": [
       "sea"
@@ -3340,6 +3607,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-266",
+    "group": "雅思同义替换",
     "word": "mate",
     "synonyms": [
       "spouse"
@@ -3352,6 +3620,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-267",
+    "group": "雅思同义替换",
     "word": "mechanism",
     "synonyms": [
       "method"
@@ -3364,6 +3633,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-268",
+    "group": "雅思同义替换",
     "word": "mental",
     "synonyms": [
       "intelligent"
@@ -3376,6 +3646,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-269",
+    "group": "雅思同义替换",
     "word": "mercury",
     "synonyms": [
       "liquid metal"
@@ -3388,6 +3659,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-270",
+    "group": "雅思同义替换",
     "word": "meteorology",
     "synonyms": [
       "weather"
@@ -3400,6 +3672,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-271",
+    "group": "雅思同义替换",
     "word": "migrate",
     "synonyms": [
       "move"
@@ -3412,6 +3685,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-272",
+    "group": "雅思同义替换",
     "word": "moisture",
     "synonyms": [
       "humidity"
@@ -3424,6 +3698,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-273",
+    "group": "雅思同义替换",
     "word": "monitor",
     "synonyms": [
       "surveillance"
@@ -3436,6 +3711,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-274",
+    "group": "雅思同义替换",
     "word": "motif",
     "synonyms": [
       "theme"
@@ -3448,6 +3724,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-275",
+    "group": "雅思同义替换",
     "word": "mould",
     "synonyms": [
       "form"
@@ -3460,6 +3737,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-276",
+    "group": "雅思同义替换",
     "word": "native",
     "synonyms": [
       "original"
@@ -3472,6 +3750,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-277",
+    "group": "雅思同义替换",
     "word": "nocturnal",
     "synonyms": [
       "night"
@@ -3484,6 +3763,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-278",
+    "group": "雅思同义替换",
     "word": "norm",
     "synonyms": [
       "regulation"
@@ -3496,6 +3776,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-279",
+    "group": "雅思同义替换",
     "word": "notoriety",
     "synonyms": [
       "famous"
@@ -3508,6 +3789,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-280",
+    "group": "雅思同义替换",
     "word": "objective",
     "synonyms": [
       "goal"
@@ -3520,6 +3802,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-281",
+    "group": "雅思同义替换",
     "word": "obligation",
     "synonyms": [
       "responsibility"
@@ -3532,6 +3815,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-282",
+    "group": "雅思同义替换",
     "word": "obscure",
     "synonyms": [
       "hide"
@@ -3544,6 +3828,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-283",
+    "group": "雅思同义替换",
     "word": "obtain",
     "synonyms": [
       "get"
@@ -3556,6 +3841,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-284",
+    "group": "雅思同义替换",
     "word": "odd",
     "synonyms": [
       "strange"
@@ -3568,6 +3854,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-285",
+    "group": "雅思同义替换",
     "word": "odour",
     "synonyms": [
       "smell"
@@ -3580,6 +3867,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-286",
+    "group": "雅思同义替换",
     "word": "offensive",
     "synonyms": [
       "hostile"
@@ -3592,6 +3880,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-287",
+    "group": "雅思同义替换",
     "word": "official",
     "synonyms": [
       "authority"
@@ -3604,6 +3893,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-288",
+    "group": "雅思同义替换",
     "word": "optimum",
     "synonyms": [
       "best"
@@ -3616,6 +3906,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-289",
+    "group": "雅思同义替换",
     "word": "ordinary",
     "synonyms": [
       "common"
@@ -3628,6 +3919,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-290",
+    "group": "雅思同义替换",
     "word": "organ",
     "synonyms": [
       "a part of body"
@@ -3640,6 +3932,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-291",
+    "group": "雅思同义替换",
     "word": "out of question",
     "synonyms": [
       "impossible"
@@ -3652,6 +3945,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-292",
+    "group": "雅思同义替换",
     "word": "overcome",
     "synonyms": [
       "defeat"
@@ -3664,6 +3958,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-293",
+    "group": "雅思同义替换",
     "word": "overtake",
     "synonyms": [
       "surpass"
@@ -3676,6 +3971,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-294",
+    "group": "雅思同义替换",
     "word": "paralyse",
     "synonyms": [
       "connot move"
@@ -3688,6 +3984,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-295",
+    "group": "雅思同义替换",
     "word": "paramount",
     "synonyms": [
       "principal"
@@ -3700,6 +3997,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-296",
+    "group": "雅思同义替换",
     "word": "participate",
     "synonyms": [
       "join"
@@ -3712,6 +4010,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-297",
+    "group": "雅思同义替换",
     "word": "patient",
     "synonyms": [
       "repetitive"
@@ -3724,6 +4023,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-298",
+    "group": "雅思同义替换",
     "word": "peak",
     "synonyms": [
       "top"
@@ -3736,6 +4036,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-299",
+    "group": "雅思同义替换",
     "word": "permit",
     "synonyms": [
       "allow"
@@ -3748,6 +4049,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-300",
+    "group": "雅思同义替换",
     "word": "persuade",
     "synonyms": [
       "influence"
@@ -3760,6 +4062,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-301",
+    "group": "雅思同义替换",
     "word": "pessimistic",
     "synonyms": [
       "negative"
@@ -3772,6 +4075,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-302",
+    "group": "雅思同义替换",
     "word": "phase",
     "synonyms": [
       "process"
@@ -3784,6 +4088,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-303",
+    "group": "雅思同义替换",
     "word": "physical",
     "synonyms": [
       "body"
@@ -3796,6 +4101,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-304",
+    "group": "雅思同义替换",
     "word": "plagiarise",
     "synonyms": [
       "copy"
@@ -3808,6 +4114,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-305",
+    "group": "雅思同义替换",
     "word": "plenty of",
     "synonyms": [
       "many"
@@ -3820,6 +4127,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-306",
+    "group": "雅思同义替换",
     "word": "plot",
     "synonyms": [
       "plan"
@@ -3832,6 +4140,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-307",
+    "group": "雅思同义替换",
     "word": "pose",
     "synonyms": [
       "cause"
@@ -3844,6 +4153,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-308",
+    "group": "雅思同义替换",
     "word": "portable",
     "synonyms": [
       "conveyable"
@@ -3856,6 +4166,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-309",
+    "group": "雅思同义替换",
     "word": "poverty",
     "synonyms": [
       "poor"
@@ -3868,6 +4179,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-310",
+    "group": "雅思同义替换",
     "word": "praise",
     "synonyms": [
       "commend"
@@ -3880,6 +4192,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-311",
+    "group": "雅思同义替换",
     "word": "predict",
     "synonyms": [
       "expect"
@@ -3892,6 +4205,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-312",
+    "group": "雅思同义替换",
     "word": "pressing",
     "synonyms": [
       "urgent"
@@ -3904,6 +4218,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-313",
+    "group": "雅思同义替换",
     "word": "private",
     "synonyms": [
       "personal"
@@ -3916,6 +4231,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-314",
+    "group": "雅思同义替换",
     "word": "prohibit",
     "synonyms": [
       "not allowed"
@@ -3928,6 +4244,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-315",
+    "group": "雅思同义替换",
     "word": "prolong",
     "synonyms": [
       "extend"
@@ -3940,6 +4257,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-316",
+    "group": "雅思同义替换",
     "word": "promote",
     "synonyms": [
       "improve"
@@ -3952,6 +4270,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-317",
+    "group": "雅思同义替换",
     "word": "prosper",
     "synonyms": [
       "success"
@@ -3964,6 +4283,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-318",
+    "group": "雅思同义替换",
     "word": "purify",
     "synonyms": [
       "clean"
@@ -3976,6 +4296,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-319",
+    "group": "雅思同义替换",
     "word": "qualify",
     "synonyms": [
       "fulfill"
@@ -3988,6 +4309,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-320",
+    "group": "雅思同义替换",
     "word": "radical",
     "synonyms": [
       "utmost"
@@ -4000,6 +4322,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-321",
+    "group": "雅思同义替换",
     "word": "range",
     "synonyms": [
       "scope"
@@ -4012,6 +4335,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-322",
+    "group": "雅思同义替换",
     "word": "rare",
     "synonyms": [
       "unusual"
@@ -4024,6 +4348,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-323",
+    "group": "雅思同义替换",
     "word": "rate",
     "synonyms": [
       "rank",
@@ -4037,6 +4362,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-324",
+    "group": "雅思同义替换",
     "word": "react",
     "synonyms": [
       "respond"
@@ -4049,6 +4375,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-325",
+    "group": "雅思同义替换",
     "word": "recreation",
     "synonyms": [
       "entertainment"
@@ -4061,6 +4388,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-326",
+    "group": "雅思同义替换",
     "word": "reduction",
     "synonyms": [
       "decrease"
@@ -4073,6 +4401,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-327",
+    "group": "雅思同义替换",
     "word": "refer to",
     "synonyms": [
       "talk about"
@@ -4085,6 +4414,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-328",
+    "group": "雅思同义替换",
     "word": "rehearsal",
     "synonyms": [
       "preparation"
@@ -4097,6 +4427,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-329",
+    "group": "雅思同义替换",
     "word": "reject",
     "synonyms": [
       "exclude"
@@ -4109,6 +4440,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-330",
+    "group": "雅思同义替换",
     "word": "relevant",
     "synonyms": [
       "relative"
@@ -4121,6 +4453,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-331",
+    "group": "雅思同义替换",
     "word": "religious",
     "synonyms": [
       "sacred"
@@ -4133,6 +4466,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-332",
+    "group": "雅思同义替换",
     "word": "reluctant",
     "synonyms": [
       "unwilling"
@@ -4145,6 +4479,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-333",
+    "group": "雅思同义替换",
     "word": "reproduce",
     "synonyms": [
       "breed"
@@ -4157,6 +4492,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-334",
+    "group": "雅思同义替换",
     "word": "responsible",
     "synonyms": [
       "liable"
@@ -4169,6 +4505,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-335",
+    "group": "雅思同义替换",
     "word": "revision",
     "synonyms": [
       "editing"
@@ -4181,6 +4518,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-336",
+    "group": "雅思同义替换",
     "word": "revive",
     "synonyms": [
       "renaissance"
@@ -4193,6 +4531,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-337",
+    "group": "雅思同义替换",
     "word": "ruin",
     "synonyms": [
       "destroy"
@@ -4205,6 +4544,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-338",
+    "group": "雅思同义替换",
     "word": "scenic",
     "synonyms": [
       "beautiful"
@@ -4217,6 +4557,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-339",
+    "group": "雅思同义替换",
     "word": "shade",
     "synonyms": [
       "shelter"
@@ -4229,6 +4570,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-340",
+    "group": "雅思同义替换",
     "word": "skepticism",
     "synonyms": [
       "doubt"
@@ -4241,6 +4583,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-341",
+    "group": "雅思同义替换",
     "word": "soar",
     "synonyms": [
       "increase"
@@ -4253,6 +4596,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-342",
+    "group": "雅思同义替换",
     "word": "solely",
     "synonyms": [
       "alone"
@@ -4265,6 +4609,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-343",
+    "group": "雅思同义替换",
     "word": "solicitor",
     "synonyms": [
       "lawyer"
@@ -4277,6 +4622,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-344",
+    "group": "雅思同义替换",
     "word": "steer",
     "synonyms": [
       "manage"
@@ -4289,6 +4635,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-345",
+    "group": "雅思同义替换",
     "word": "stimulate",
     "synonyms": [
       "motivate"
@@ -4301,6 +4648,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-346",
+    "group": "雅思同义替换",
     "word": "stride",
     "synonyms": [
       "progress"
@@ -4313,6 +4661,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-347",
+    "group": "雅思同义替换",
     "word": "succumb",
     "synonyms": [
       "yield"
@@ -4325,6 +4674,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-348",
+    "group": "雅思同义替换",
     "word": "subdivide",
     "synonyms": [
       "break down"
@@ -4337,6 +4687,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-349",
+    "group": "雅思同义替换",
     "word": "subtle",
     "synonyms": [
       "delicate"
@@ -4349,6 +4700,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-350",
+    "group": "雅思同义替换",
     "word": "substance",
     "synonyms": [
       "matter"
@@ -4361,6 +4713,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-351",
+    "group": "雅思同义替换",
     "word": "sufficiency",
     "synonyms": [
       "enough"
@@ -4373,6 +4726,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-352",
+    "group": "雅思同义替换",
     "word": "supersede",
     "synonyms": [
       "replace"
@@ -4385,6 +4739,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-353",
+    "group": "雅思同义替换",
     "word": "suppress",
     "synonyms": [
       "hold"
@@ -4397,6 +4752,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-354",
+    "group": "雅思同义替换",
     "word": "supremacy",
     "synonyms": [
       "priority"
@@ -4409,6 +4765,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-355",
+    "group": "雅思同义替换",
     "word": "suspicious",
     "synonyms": [
       "odd"
@@ -4421,6 +4778,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-356",
+    "group": "雅思同义替换",
     "word": "sustainable",
     "synonyms": [
       "long-term"
@@ -4433,6 +4791,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-357",
+    "group": "雅思同义替换",
     "word": "symptom",
     "synonyms": [
       "sign"
@@ -4445,6 +4804,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-358",
+    "group": "雅思同义替换",
     "word": "tension",
     "synonyms": [
       "upset"
@@ -4457,6 +4817,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-359",
+    "group": "雅思同义替换",
     "word": "term",
     "synonyms": [
       "word"
@@ -4469,6 +4830,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-360",
+    "group": "雅思同义替换",
     "word": "throughout",
     "synonyms": [
       "anywhere"
@@ -4481,6 +4843,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-361",
+    "group": "雅思同义替换",
     "word": "toll",
     "synonyms": [
       "charge"
@@ -4493,6 +4856,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-362",
+    "group": "雅思同义替换",
     "word": "trace",
     "synonyms": [
       "track"
@@ -4505,6 +4869,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-363",
+    "group": "雅思同义替换",
     "word": "transcend",
     "synonyms": [
       "excel"
@@ -4517,6 +4882,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-364",
+    "group": "雅思同义替换",
     "word": "transmit",
     "synonyms": [
       "send"
@@ -4529,6 +4895,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-365",
+    "group": "雅思同义替换",
     "word": "tremendous",
     "synonyms": [
       "vast"
@@ -4541,6 +4908,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-366",
+    "group": "雅思同义替换",
     "word": "trigger",
     "synonyms": [
       "begin"
@@ -4553,6 +4921,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-367",
+    "group": "雅思同义替换",
     "word": "tropical",
     "synonyms": [
       "hot"
@@ -4565,6 +4934,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-368",
+    "group": "雅思同义替换",
     "word": "unbiased",
     "synonyms": [
       "fair"
@@ -4577,6 +4947,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-369",
+    "group": "雅思同义替换",
     "word": "uniform",
     "synonyms": [
       "consistent"
@@ -4589,6 +4960,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-370",
+    "group": "雅思同义替换",
     "word": "valuable",
     "synonyms": [
       "benefit"
@@ -4601,6 +4973,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-371",
+    "group": "雅思同义替换",
     "word": "versatile",
     "synonyms": [
       "all-around"
@@ -4613,6 +4986,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-372",
+    "group": "雅思同义替换",
     "word": "view",
     "synonyms": [
       "overlook"
@@ -4625,6 +4999,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-373",
+    "group": "雅思同义替换",
     "word": "violent",
     "synonyms": [
       "fierce"
@@ -4637,6 +5012,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-374",
+    "group": "雅思同义替换",
     "word": "visible",
     "synonyms": [
       "see"
@@ -4649,6 +5025,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-375",
+    "group": "雅思同义替换",
     "word": "visual",
     "synonyms": [
       "image"
@@ -4661,6 +5038,7 @@ export const vocabulary: VocabularyEntry[] = [
   },
   {
     "id": "ielts-376",
+    "group": "雅思同义替换",
     "word": "well-being",
     "synonyms": [
       "health"
@@ -4672,6 +5050,3 @@ export const vocabulary: VocabularyEntry[] = [
     "explanation": "well-being ≈ health"
   }
 ];
-
-export const categories = Array.from(new Set(vocabulary.map((item) => item.category))).sort();
-export const scenarios: Scenario[] = ["Reading", "Listening", "Writing", "Speaking"];
