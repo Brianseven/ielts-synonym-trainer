@@ -18,6 +18,7 @@ import { categories, groups, scenarios, vocabulary, type Scenario, type Vocabula
 
 type Page = "dashboard" | "library" | "memorize" | "quiz" | "review";
 type StudyStatus = "new" | "learning" | "mastered" | "focus";
+type MemorizationRange = "all" | "weak" | "mastered" | "new";
 
 interface EntryProgress {
   status: StudyStatus;
@@ -50,6 +51,13 @@ const statusOptions: Array<{ value: "all" | StudyStatus; label: string }> = [
   { value: "learning", label: "学习中" },
   { value: "mastered", label: "已掌握" },
   { value: "focus", label: "重点复习" },
+];
+
+const memorizationRangeOptions: Array<{ value: MemorizationRange; label: string }> = [
+  { value: "all", label: "全部单词" },
+  { value: "weak", label: "不认识 / 重点" },
+  { value: "mastered", label: "已掌握" },
+  { value: "new", label: "未学习" },
 ];
 
 function answerText(entry: VocabularyEntry): string {
@@ -98,6 +106,13 @@ function loadProgress(): Record<string, EntryProgress> {
 
 function getProgress(progress: Record<string, EntryProgress>, id: string): EntryProgress {
   return progress[id] ?? { status: "new", correct: 0, wrong: 0 };
+}
+
+function matchesMemorizationRange(itemProgress: EntryProgress, range: MemorizationRange): boolean {
+  if (range === "all") return true;
+  if (range === "mastered") return itemProgress.status === "mastered";
+  if (range === "new") return itemProgress.status === "new";
+  return itemProgress.status === "focus" || itemProgress.status === "learning" || itemProgress.wrong > 0;
 }
 
 function shuffle<T>(items: T[]): T[] {
@@ -557,6 +572,7 @@ function Memorization({
   reviewOnly: boolean;
 }) {
   const [groupFilter, setGroupFilter] = useState<"all" | VocabularyGroup>("all");
+  const [rangeFilter, setRangeFilter] = useState<MemorizationRange>("all");
 
   const deck = useMemo(() => {
     const source = reviewOnly
@@ -567,6 +583,7 @@ function Memorization({
       : vocabulary;
     return source
       .filter((item) => groupFilter === "all" || item.group === groupFilter)
+      .filter((item) => matchesMemorizationRange(getProgress(progress, item.id), rangeFilter))
       .sort((a, b) => {
         const aProgress = getProgress(progress, a.id);
         const bProgress = getProgress(progress, b.id);
@@ -574,7 +591,7 @@ function Memorization({
         const bScore = (bProgress.status === "focus" ? -3 : 0) + bProgress.correct - bProgress.wrong * 2;
         return aScore - bScore;
       });
-  }, [groupFilter, progress, reviewOnly]);
+  }, [groupFilter, progress, rangeFilter, reviewOnly]);
 
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
@@ -585,14 +602,14 @@ function Memorization({
   useEffect(() => {
     setIndex(0);
     setFlipped(false);
-  }, [groupFilter, reviewOnly]);
+  }, [groupFilter, rangeFilter, reviewOnly]);
 
   if (!entry || !itemProgress) {
     return (
       <section className="empty-state">
         <Flag size={32} />
-        <h1>现在没有需要重点复习的词条</h1>
-        <p>你可以先去词库标记重点，或在测试中积累错题。</p>
+        <h1>这个范围里暂时没有词条</h1>
+        <p>可以切换分组或背诵范围，也可以先在词库里标记重点、或继续测试积累错题。</p>
       </section>
     );
   }
@@ -618,6 +635,13 @@ function Memorization({
               </option>
             ))}
           </select>
+          <select value={rangeFilter} onChange={(event) => setRangeFilter(event.target.value as MemorizationRange)}>
+            {memorizationRangeOptions.map((item) => (
+              <option key={item.value} value={item.value}>
+                {item.label}
+              </option>
+            ))}
+          </select>
           <div className="segmented">
             <button className={frontMode === "word" ? "selected" : ""} onClick={() => setFrontMode("word")}>
               英文
@@ -632,7 +656,7 @@ function Memorization({
       <button className={`flash-card ${flipped ? "flipped" : ""}`} onClick={() => setFlipped((value) => !value)}>
         {!flipped ? (
           <div className="flash-front">
-            <span>{index + 1} / {deck.length}</span>
+            <span>{index + 1} / {deck.length} · {statusLabels[itemProgress.status]}</span>
             <h2>{frontMode === "word" ? entry.word : entry.chinese}</h2>
             <p>点击卡片查看答案</p>
           </div>
