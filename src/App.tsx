@@ -10,6 +10,7 @@ import {
   Search,
   Sparkles,
   Target,
+  Volume2,
   X,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
@@ -61,6 +62,29 @@ function answerLabel(entry: VocabularyEntry): string {
 
 function firstAnswer(entry: VocabularyEntry): string {
   return entry.synonyms[0] ?? entry.word;
+}
+
+function speakEnglish(text: string): void {
+  if (typeof window === "undefined" || !("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") {
+    return;
+  }
+
+  const cleaned = text.replace(/\s*\/\s*/g, ", ").replace(/[()]/g, " ").replace(/\s+/g, " ").trim();
+  if (!cleaned) return;
+
+  const utterance = new SpeechSynthesisUtterance(cleaned);
+  utterance.lang = "en-US";
+  utterance.rate = 0.86;
+  utterance.pitch = 1;
+
+  const voices = window.speechSynthesis.getVoices();
+  const voice = voices.find((item) => item.lang.toLowerCase().startsWith("en-us")) ?? voices.find((item) => item.lang.toLowerCase().startsWith("en"));
+  if (voice) {
+    utterance.voice = voice;
+  }
+
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(utterance);
 }
 
 function loadProgress(): Record<string, EntryProgress> {
@@ -286,6 +310,37 @@ function NavButton({
   );
 }
 
+function SpeakButton({
+  text,
+  label = "发音",
+  compact = false,
+}: {
+  text: string;
+  label?: string;
+  compact?: boolean;
+}) {
+  const supported =
+    typeof window !== "undefined" && "speechSynthesis" in window && typeof SpeechSynthesisUtterance !== "undefined";
+
+  if (!supported || !text.trim()) return null;
+
+  return (
+    <button
+      type="button"
+      className={`speak-button ${compact ? "speak-button-compact" : ""}`}
+      onClick={(event) => {
+        event.stopPropagation();
+        speakEnglish(text);
+      }}
+      aria-label={`朗读 ${text}`}
+      title={`朗读 ${text}`}
+    >
+      <Volume2 size={compact ? 15 : 17} />
+      {!compact && <span>{label}</span>}
+    </button>
+  );
+}
+
 function Dashboard({
   stats,
   setPage,
@@ -450,14 +505,18 @@ function Library({
             <article className="vocab-card" key={item.id}>
               <div className="vocab-main">
                 <div>
-                  <h2>{item.word}</h2>
+                  <div className="word-line">
+                    <h2>{item.word}</h2>
+                    <SpeakButton text={item.word} compact />
+                  </div>
                   <p>{item.chinese}</p>
                 </div>
                 <span className={`status-pill status-${itemProgress.status}`}>{statusLabels[itemProgress.status]}</span>
               </div>
               <div className="synonym-line">
                 <span>{answerLabel(item)}：</span>
-                {answerText(item)}
+                <span className="synonym-text">{answerText(item)}</span>
+                {item.synonyms.length > 0 && <SpeakButton text={answerText(item)} label="朗读替换" compact />}
               </div>
               <p className="example">{item.example}</p>
               <div className="meta-line">
@@ -588,6 +647,8 @@ function Memorization({
       </button>
 
       <div className="study-actions">
+        <SpeakButton text={entry.word} label="读原词" />
+        {entry.synonyms.length > 0 && <SpeakButton text={answerText(entry)} label="读替换" />}
         <button
           onClick={() => {
             updateProgress(entry.id, { status: "mastered", correct: itemProgress.correct + 1 });
@@ -710,25 +771,33 @@ function Quiz({ markQuizResult }: { markQuizResult: (id: string, correct: boolea
           <i style={{ width: `${((current + 1) / questions.length) * 100}%` }} />
         </div>
       </div>
-      <h1>{question.prompt}</h1>
+      <div className="quiz-heading">
+        <h1>{question.prompt}</h1>
+        <SpeakButton text={question.entry.word} label="读关键词" />
+      </div>
       <div className="option-grid">
-        {question.options.map((option) => (
-          <button
-            className={[
+        {question.options.map((option) => {
+          const optionClass = [
               selected === option ? "selected" : "",
               submitted && option === question.answer ? "correct" : "",
               submitted && selected === option && option !== question.answer ? "wrong" : "",
-            ].join(" ")}
-            key={option}
-            onClick={() => !submitted && setSelected(option)}
-          >
-            {option}
-          </button>
-        ))}
+            ].join(" ");
+          return (
+            <div className={`option-choice ${optionClass}`} key={option}>
+              <button type="button" onClick={() => !submitted && setSelected(option)}>
+                {option}
+              </button>
+              <SpeakButton text={option} label="朗读选项" compact />
+            </div>
+          );
+        })}
       </div>
       {submitted && (
         <div className="answer-panel">
-          <strong>{selected === question.answer ? "回答正确" : "回答错误"}</strong>
+          <div className="answer-title">
+            <strong>{selected === question.answer ? "回答正确" : "回答错误"}</strong>
+            <SpeakButton text={question.answer} label="朗读答案" compact />
+          </div>
           <p>{question.explanation}</p>
         </div>
       )}
@@ -796,7 +865,10 @@ function Review({
             return (
               <article className="review-card" key={item.id}>
                 <div className="vocab-main">
-                  <strong>{item.word}</strong>
+                  <div className="word-line">
+                    <strong>{item.word}</strong>
+                    <SpeakButton text={item.word} compact />
+                  </div>
                   <span className={`status-pill status-${itemProgress.status}`}>{statusLabels[itemProgress.status]}</span>
                 </div>
                 <p>{answerText(item)}</p>

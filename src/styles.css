@@ -250,7 +250,8 @@ button {
 .secondary-action:hover,
 .card-actions button:hover,
 .study-actions button:hover,
-.header-actions button:hover {
+.header-actions button:hover,
+.speak-button:hover {
   border-color: #287783;
 }
 
@@ -344,6 +345,13 @@ button {
   margin: 0;
 }
 
+.word-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
 .vocab-main h2 {
   font-size: 22px;
 }
@@ -388,12 +396,44 @@ button {
 }
 
 .synonym-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
   color: #172027;
   font-weight: 800;
   line-height: 1.45;
 }
 
 .synonym-line span {
+  color: #287783;
+}
+
+.synonym-line .synonym-text {
+  color: #172027;
+}
+
+.speak-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid #cfd6cd;
+  border-radius: 8px;
+  color: #172027;
+  background: #ffffff;
+  font-weight: 800;
+}
+
+.speak-button-compact {
+  flex: 0 0 auto;
+  width: 34px;
+  min-width: 34px;
+  min-height: 34px;
+  padding: 0;
+  border-radius: 999px;
   color: #287783;
 }
 
@@ -553,6 +593,11 @@ button {
   gap: 24px;
 }
 
+.quiz-heading {
+  display: grid;
+  gap: 12px;
+}
+
 .quiz-progress {
   display: grid;
   gap: 8px;
@@ -580,28 +625,42 @@ button {
   gap: 12px;
 }
 
-.option-grid button {
+.option-choice {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: stretch;
   min-height: 72px;
-  padding: 14px 16px;
   border: 1px solid #cfd6cd;
   border-radius: 8px;
   background: #ffffff;
+}
+
+.option-choice > button {
+  min-width: 0;
+  padding: 14px 16px;
+  border-radius: 8px 0 0 8px;
+  background: transparent;
   color: #172027;
   text-align: left;
   font-weight: 800;
 }
 
-.option-grid button.selected {
+.option-choice .speak-button {
+  align-self: center;
+  margin-right: 12px;
+}
+
+.option-choice.selected {
   border-color: #287783;
   background: #e4eef0;
 }
 
-.option-grid button.correct {
+.option-choice.correct {
   border-color: #2f8a5b;
   background: #dff2e7;
 }
 
-.option-grid button.wrong {
+.option-choice.wrong {
   border-color: #b84a4a;
   background: #ffe2de;
 }
@@ -616,6 +675,12 @@ button {
 .answer-panel p {
   margin: 6px 0 0;
   color: #60707c;
+}
+
+.answer-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .wrong-list {
